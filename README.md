@@ -13,7 +13,7 @@ Run the command `pip install snipeit`
   - [X] Locations
   - [X] Accessories
   - [X] Consumables
-  - [ ] Components
+  - [X] Components
   - [ ] Users
   - [ ] Status Labels
   - [ ] Models
