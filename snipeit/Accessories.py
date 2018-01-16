@@ -21,46 +21,40 @@ except:
 
 import json
 
-class Company(object):
+class Accessories(object):
     def __init__(self):
         pass
 
-    def get(self, server, token):
-        self.uri = '/api/v1/companies'
+    def get(self, server, token, limit=None):
+        if limit is not None:
+            self.uri = '/api/v1/accessories?limit=' + str(limit)
+        else:
+            self.uri = '/api/v1/accessories'
         self.server = server + self.uri
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
         return results.content
 
     def create(self, server, token, payload):
-        self.uri = '/api/v1/companies'
+        self.uri = '/api/v1/accessories'
         self.server = server + self.uri
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
     def getID(self, server, token, asset_name):
-        self.uri = '/api/v1/companies?search='
+        self.uri = '/api/v1/accessories?search='
         self.server = server + self.uri + asset_name
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
         jsonData = json.loads(results.content)
         if len(jsonData['rows']) < 2 and jsonData['rows'][0]['id'] is not None:
-            CompanyID = jsonData['rows'][0]['id']
-        return CompanyID
+            AccessoriesID = jsonData['rows'][0]['id']
+        return AccessoriesID
 
-    def delete(self, server, token, CompanyID):
-        self.uri = '/api/v1/companies/'
-        self.server = server + self.uri + CompanyID
+    def viewID(self, server, token, AccessoryID):
+        self.uri = '/api/v1/accessories/'
+        self.server = server + self.uri + AccessoryID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
-        results = requests.delete(self.server, headers=headers)
-        jsonData = json.loads(results.content)
-        return jsonData['status']
-
-    def updateCompany(self, server, token, CompanyID, payload):
-        self.uri = '/api/v1/companies/'
-        self.server = server + self.uri + CompanyID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
-        results = requests.patch(self.server, headers=headers, data=payload)
-        jsonData = json.loads(results.content)
-        return jsonData['status']
+        results = requests.get(self.server, headers=headers)
+        return results.content

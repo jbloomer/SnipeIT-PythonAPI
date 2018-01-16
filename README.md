@@ -7,7 +7,28 @@ Run the command `pip install snipeit`
 ## Usage
   * See Example Scripts included in package for specific calls
 
+## API Features
+  - [X] Hardware
+  - [X] Companies
+  - [X] Locations
+  - [X] Accessories
+  - [ ] Consumables
+  - [ ] Components
+  - [ ] Users
+  - [ ] Status Labels
+  - [ ] Models
+  - [ ] Licenses
+  - [ ] Categories
+  - [ ] Manufacturers
+  - [ ] Custom Fieldsets
+
 ## Release History
+  * 0.4
+    * Creating Support for Accessory API Calls
+      * Added get() method to get JSON dump of AccessoriesID
+      * Added create() method to add new items to Accessories
+      * Added getID() method to get the ID of a specified accessories
+      * Added viewID() method to get details of a specific accessory
   * 0.3
     * Creating Support for Locations API Calls
       * Added get() method to get JSON dump of locations
