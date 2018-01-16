@@ -1,0 +1,6 @@
+# Distribution / packaging
+*.egg-info/
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+*.pyc
