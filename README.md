@@ -12,7 +12,7 @@ Run the command `pip install snipeit`
   - [X] Companies
   - [X] Locations
   - [X] Accessories
-  - [ ] Consumables
+  - [X] Consumables
   - [ ] Components
   - [ ] Users
   - [ ] Status Labels
@@ -23,6 +23,12 @@ Run the command `pip install snipeit`
   - [ ] Custom Fieldsets
 
 ## Release History
+* 0.5
+  * Creating Support for Consumable API Calls
+    * Added get() method to get JSON dump of Consumables
+    * Added create() method to add new items to Consumables
+    * Added getID() method to get the ID of a specified consumable
+    * Added viewID() method to get details of a specific consumable
   * 0.4
     * Creating Support for Accessory API Calls
       * Added get() method to get JSON dump of AccessoriesID
