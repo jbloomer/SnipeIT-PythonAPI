@@ -22,6 +22,9 @@ Run the command `pip install snipeit`
   - [ ] Manufacturers
   - [ ] Custom Fieldsets
 
+  ![Completed](http://progressed.io/bar/46?title=completed)
+  <!-- Progress is calculated by (100/13)*<Number of Checked Boxes> -->
+
 ## Release History
 * 0.5
   * Creating Support for Consumable API Calls
