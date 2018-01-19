@@ -4,3 +4,4 @@ from Locations import Locations
 from Accessories import Accessories
 from Consumables import Consumables
 from Components import Components
+from Users import Users

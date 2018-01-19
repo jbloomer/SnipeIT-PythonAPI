@@ -14,7 +14,7 @@ Run the command `pip install snipeit`
   - [X] Accessories
   - [X] Consumables
   - [X] Components
-  - [ ] Users
+  - [X] Users
   - [ ] Status Labels
   - [ ] Models
   - [ ] Licenses
@@ -22,7 +22,7 @@ Run the command `pip install snipeit`
   - [ ] Manufacturers
   - [ ] Custom Fieldsets
 
-  ![Completed](http://progressed.io/bar/46?title=completed)
+  ![Completed](http://progressed.io/bar/53?title=completed)
   <!-- Progress is calculated by (100/13)*<Number of Checked Boxes> -->
 
 ## Release History
