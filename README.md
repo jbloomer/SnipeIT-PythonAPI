@@ -42,6 +42,22 @@ Run the command `pip install snipeit`
     * Added delete() method to remove items from Status Labels
     * Added updateStatusLabels() method (Uses PATCH call) to update details on a existing Status Label
 
+* 0.7
+  * Created Support for Users
+    * Added get() method to get JSON dump of Users
+    * Added create() method to add new items to Users
+    * Added getID() method to get the ID of a specified Users
+    * Added delete() method to remove items from Users
+    * Added updateUser() method (Uses PATCH call) to update details on a existing Users
+    * Added getCheckedOutAssets() method to get a list of Assets assigned to that User
+
+* 0.6
+  * Created Support for Components
+    * Added get() method to get JSON dump of Components
+    * Added create() method to add new items to Components
+    * Added getID() method to get the ID of a specified Components
+    * Added viewID() method to see details of Components
+
 * 0.5
   * Creating Support for Consumable API Calls
     * Added get() method to get JSON dump of Consumables
