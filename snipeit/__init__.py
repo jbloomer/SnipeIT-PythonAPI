@@ -5,3 +5,5 @@ from Accessories import Accessories
 from Consumables import Consumables
 from Components import Components
 from Users import Users
+from StatusLabels import StatusLabels
+from Models import Models

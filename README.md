@@ -15,50 +15,70 @@ Run the command `pip install snipeit`
   - [X] Consumables
   - [X] Components
   - [X] Users
-  - [ ] Status Labels
-  - [ ] Models
+  - [X] Status Labels
+  - [X] Models
   - [ ] Licenses
   - [ ] Categories
   - [ ] Manufacturers
   - [ ] Custom Fieldsets
 
-  ![Completed](http://progressed.io/bar/53?title=completed)
+  ![Completed](http://progressed.io/bar/69?title=completed)
   <!-- Progress is calculated by (100/13)*<Number of Checked Boxes> -->
 
 ## Release History
+* 0.9
+  * Created Support for Models
+    * Added get() method to get JSON dump of Models
+    * Added create() method to add new items to Models
+    * Added getID() method to get the ID of a specified Models
+    * Added delete() method to remove items from Models
+    * Added updateModel() method (Uses PATCH call) to update details on a existing Model
+
+* 0.8
+  * Created Support for StatusLabels
+    * Added get() method to get JSON dump of Status Labels
+    * Added create() method to add new items to Status Labels
+    * Added getID() method to get the ID of a specified Status Labels
+    * Added delete() method to remove items from Status Labels
+    * Added updateStatusLabels() method (Uses PATCH call) to update details on a existing Status Label
+
 * 0.5
   * Creating Support for Consumable API Calls
     * Added get() method to get JSON dump of Consumables
     * Added create() method to add new items to Consumables
     * Added getID() method to get the ID of a specified consumable
     * Added viewID() method to get details of a specific consumable
-  * 0.4
-    * Creating Support for Accessory API Calls
-      * Added get() method to get JSON dump of AccessoriesID
-      * Added create() method to add new items to Accessories
-      * Added getID() method to get the ID of a specified accessories
-      * Added viewID() method to get details of a specific accessory
-  * 0.3
-    * Creating Support for Locations API Calls
-      * Added get() method to get JSON dump of locations
-      * Added create() method to add new items to locations
-      * Added getID() method to get the ID of a specified locations
-      * Added updateCompany() method (Uses PATCH call) to update the name of an existing location.
-      * Added delete() method to remove items from locations
-  * 0.2
-    * Creating Support for Company API Calls
-      * Added get() method to get JSON dump of companies
-      * Added create() method to add new items to companies
-      * Added getID() method to get the ID of a specified company
-      * Added delete() method to remove items from companies
-      * Added updateCompany() method (Uses PATCH call) to update the name of an existing company.
-  * 0.1
-    * Created Support for Assets
-        * Added get() method to get JSON dump of inventory
-        * Added create() method to add new items to inventory
-        * Added getID() method to get the ID of a specified device in the inventory
-        * Added delete() method to remove items from inventory
-        * Added updateDevice() method (Uses PATCH call) to update details on a device currently in inventory.
+
+* 0.4
+  * Creating Support for Accessory API Calls
+    * Added get() method to get JSON dump of AccessoriesID
+    * Added create() method to add new items to Accessories
+    * Added getID() method to get the ID of a specified accessories
+    * Added viewID() method to get details of a specific accessory
+
+* 0.3
+  * Creating Support for Locations API Calls
+    * Added get() method to get JSON dump of locations
+    * Added create() method to add new items to locations
+    * Added getID() method to get the ID of a specified locations
+    * Added updateCompany() method (Uses PATCH call) to update the name of an existing location.
+    * Added delete() method to remove items from locations
+
+* 0.2
+  * Creating Support for Company API Calls
+    * Added get() method to get JSON dump of companies
+    * Added create() method to add new items to companies
+    * Added getID() method to get the ID of a specified company
+    * Added delete() method to remove items from companies
+    * Added updateCompany() method (Uses PATCH call) to update the name of an existing company.
+
+* 0.1
+  * Created Support for Assets
+      * Added get() method to get JSON dump of inventory
+      * Added create() method to add new items to inventory
+      * Added getID() method to get the ID of a specified device in the inventory
+      * Added delete() method to remove items from inventory
+      * Added updateDevice() method (Uses PATCH call) to update details on a device currently in inventory.
 
 ## Contributing
 1. Fork it!
