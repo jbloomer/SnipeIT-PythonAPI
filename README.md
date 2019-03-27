@@ -17,15 +17,32 @@ Run the command `pip install snipeit`
   - [X] Users
   - [X] Status Labels
   - [X] Models
-  - [ ] Licenses
-  - [ ] Categories
-  - [ ] Manufacturers
-  - [ ] Custom Fieldsets
+  - [X] Licenses
+  - [X] Categories
+  - [X] Manufacturers
+  - [X] Custom Fieldsets
+  - [X] Maintenances
 
-  ![Completed](http://progressed.io/bar/69?title=completed)
-  <!-- Progress is calculated by (100/13)*<Number of Checked Boxes> -->
+  ![Completed](http://progressed.io/bar/100?title=completed)
+  <!-- Progress is calculated by (100/14)*<Number of Checked Boxes> -->
 
 ## Release History
+* 0.11
+  * Completing API features based on Snipe-IT version 4.6.14
+    * Added Categories class
+	* Added Fieldsets class
+	* Added Missing Licenses class
+	* Added Manufacturers class
+	* Added Maintenances class
+	* Added docstrings for each methods
+	* Removed unrelated methods in some classes
+	* Added search() method for all supported APIs
+	* Update get() methods to incorporate ordering
+    * Added many new methods in each class (see documentation files)
+	* Added documentation files     
+* 0.10
+  * Update import issue in python3
+    * Updated __init__.py to python 3 import style
 * 0.9
   * Created Support for Models
     * Added get() method to get JSON dump of Models
