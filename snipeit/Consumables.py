@@ -22,39 +22,187 @@ except:
 import json
 
 class Consumables(object):
+    """Class to access consumables API    
+    """    
     def __init__(self):
         pass
 
-    def get(self, server, token, limit=None):
+    def get(self, server, token, limit=None, order='asc'):
+        """Get list of consumables
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+            order {string} -- Display order of data (asc / desc default:{asc})
+        
+        Returns:
+            [string] -- List of consumables from the server, in JSON formatted
+        """
         if limit is not None:
-            self.uri = '/api/v1/consumables?limit=' + str(limit)
+            self.uri = '/api/v1/consumables?limit=' + str(limit) + '&order=' + order
         else:
-            self.uri = '/api/v1/consumables'
-        self.server = server + self.uri
+            self.uri = '/api/v1/consumables' + '?order=' + order
+        self.server = server + self.uri 
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
         return results.content
 
+
+    def getConsumablesByOrder(self, server, token, orderNumber, limit=None, order='asc'):
+        """Get list of consumables
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            orderNumber {string} -- Order Number to be used as filter
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+            order {string} -- Display order of data (asc / desc default:{asc})
+        
+        Returns:
+            [string] -- List of consumables from the server, in JSON formatted
+        """
+        if limit is not None:
+            self.uri = '/api/v1/consumables?limit=' + str(limit) + '&order=' + order
+        else:
+            self.uri = '/api/v1/consumables' + '?order=' + order
+        self.server = server + self.uri 
+        headers = {'Authorization': 'Bearer ' + token}
+        results = requests.get(self.server, headers=headers)
+        return results.content
+
+    def getConsumablesByCategory(self, server, token, categoryID, limit=None, order='asc'):
+        """Get list of consumables
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            categoryID {string} -- Category ID to be used as filter
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+            order {string} -- Display order of data (asc / desc default:{asc})
+        
+        Returns:
+            [string] -- List of consumables from the server, in JSON formatted
+        """
+        if limit is not None:
+            self.uri = '/api/v1/consumables?limit=' + str(limit) + '&order=' + order
+        else:
+            self.uri = '/api/v1/consumables' + '?order=' + order
+        self.server = server + self.uri +'&category_id=' + categoryID
+        headers = {'Authorization': 'Bearer ' + token}
+        results = requests.get(self.server, headers=headers)
+        return results.content
+
+    def getConsumablesByCompany(self, server, token, companyID, limit=None, order='asc'):
+        """Get list of consumables
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            companyID {string} -- Company ID to be used as filter
+            
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+            order {string} -- Display order of data (asc / desc default:{asc})
+        
+        Returns:
+            [string] -- List of consumables from the server, in JSON formatted
+        """
+        if limit is not None:
+            self.uri = '/api/v1/consumables?limit=' + str(limit) + '&order=' + order
+        else:
+            self.uri = '/api/v1/consumables' + '?order=' + order
+        self.server = server + self.uri + '&company_id=' + companyID
+        headers = {'Authorization': 'Bearer ' + token}
+        results = requests.get(self.server, headers=headers)
+        return results.content
+
+    def getConsumablesByManufacturer(self, server, token, manufacturerID, limit=None, order='asc'):
+        """Get list of consumables filtered by manufacturer ID
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            manufacturerID {string} -- Manufacturer ID to be used as filter
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+            order {string} -- Display order of data (asc / desc default:{asc})
+        
+        Returns:
+            [string] -- List of consumables from the server, in JSON formatted
+        """
+        if limit is not None:
+            self.uri = '/api/v1/consumables?limit=' + str(limit) + '&order=' + order
+        else:
+            self.uri = '/api/v1/consumables' + '?order=' + order
+        self.server = server + self.uri +'&manufacturer_id=' + manufacturerID
+        headers = {'Authorization': 'Bearer ' + token}
+        results = requests.get(self.server, headers=headers)
+        return results.content
+
+    def search(self, server, token, limit=None, order='asc', keyword=None):
+        """Get list of consumables based on search keyword
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+        
+        Returns:
+            string -- List of consumables in JSON format.
+        """
+        if keyword is None:
+            keyword = ""
+        
+        if limit is not None:
+            self.uri = '/api/v1/consumables?limit=' + str(limit) + '&order=' + order
+        else:
+            self.uri = '/api/v1/consumables'  + '?order=' + order 
+        self.server = server + self.uri  + '&search=' + keyword
+        headers = {'Authorization': 'Bearer ' + token}
+        results = requests.get(self.server, headers=headers)
+        return results.content
     def create(self, server, token, payload):
+        """Create new consumable data.
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            payload {string} -- consumable name
+        
+        Returns:
+            [type] -- [description]
+        """
         self.uri = '/api/v1/consumables'
         self.server = server + self.uri
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def getID(self, server, token, asset_name):
-        self.uri = '/api/v1/consumables?search='
-        self.server = server + self.uri + asset_name
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
-        results = requests.get(self.server, headers=headers)
-        jsonData = json.loads(results.content)
-        if len(jsonData['rows']) < 2 and jsonData['rows'][0]['id'] is not None:
-            ConsumableID = jsonData['rows'][0]['id']
-        return ConsumableID
-
-    def viewID(self, server, token, ConsumableID):
+    def getDetailsByID(self, server, token, consumableID):
+        """Get detailed information of consumables by ID.
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            consumableID {string} -- Consumable ID to be checked
+        
+        Returns:
+            string -- detailed information of consumable in JSON
+        """
         self.uri = '/api/v1/consumables/'
-        self.server = server + self.uri + ConsumableID
+        self.server = server + self.uri + consumableID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
-        results = requests.get(self.server, headers=headers)
+        results = requests.get(self.server, headers=headers)        
         return results.content

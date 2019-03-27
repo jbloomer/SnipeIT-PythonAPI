@@ -21,64 +21,34 @@ except:
 
 import json
 
-class Models(object):
+class Manufacturers(object):
     def __init__(self):
-        """Class to access models API.
+        """Class to access manufacturers API.
         """
         pass
 
-    def get(self, server, token, limit=None, order='asc'):
-        """Get list of models
+    def get(self, server, token):
+        """Get list of manufacturers
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            order {string} -- Display order of data (asc / desc default:{asc})
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
         
         Returns:
-            string -- List of models in JSON format.
-        """
-        if limit is not None:
-            self.uri = '/api/v1/models?limit=' + str(limit) + '&order=' + order 
-        else:
-            self.uri = '/api/v1/models'  + '?order=' + order 
+            string -- List of manufacturers in JSON format.
+        """       
+        self.uri = '/api/v1/manufacturers'  
         self.server = server + self.uri
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
         return results.content
         #return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def search(self, server, token, limit=None, order='asc', keyword=None):
-        """Get list of models based on search keyword
-        
-        Arguments:
-            server {string} -- Server URI
-            token {string} -- Token value to be used for accessing the API
-            order {string} -- Display order of data (asc / desc default:{asc})
-        
-        Keyword Arguments:
-            limit {string} -- Limit the number of data returned by the server (default: {50})
-        
-        Returns:
-            string -- List of models in JSON format.
-        """
-        if keyword is None:
-            keyword = ""
-        
-        if limit is not None:
-            self.uri = '/api/v1/models?limit=' + str(limit) + '&order=' + order
-        else:
-            self.uri = '/api/v1/models'  + '?order=' + order 
-        self.server = server + self.uri  + '&search=' + keyword
-        headers = {'Authorization': 'Bearer ' + token}
-        results = requests.get(self.server, headers=headers)
-        return results.content
-
     def create(self, server, token, payload):
-        """Create new model data.
+        """Create new manufacturers data.
         
         Arguments:
             server {string} -- Server URI
@@ -88,61 +58,61 @@ class Models(object):
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/models'
+        self.uri = '/api/v1/manufacturers'
         self.server = server + self.uri
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def getDetailsByID(self, server, token, modelsID):
+    def getDetailsByID(self, server, token, manufacturersID):
         """Get detailed information of label by ID
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            modelsID {string} -- ID of the model
+            manufacturersID {string} -- ID of the manufacturers
         
         Returns:
-            string -- Detailed information of modelsID by ID
+            string -- Detailed information of manufacturers by ID
         """
-        self.uri = '/api/v1/models/'
-        self.server = server + self.uri + modelsID
+        self.uri = '/api/v1/manufacturers/'
+        self.server = server + self.uri + manufacturersID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)                
         return results.content
 
     
-    def delete(self, server, token, ModelsID):
-        """Delete model data
+    def delete(self, server, token, manufacturersID):
+        """Delete manufacturers data
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            ModelsID {string} -- ID of the model
+            manufacturersID {string} -- ID of the manufacturers
         
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/models/'
+        self.uri = '/api/v1/manufacturers/'
         self.server = server + self.uri + DeviceID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.delete(self.server, headers=headers)
         jsonData = json.loads(results.content)
         return jsonData['status']
 
-    def updateModel(self, server, token, ModelsID, payload):
+    def updatemanufacturers(self, server, token, manufacturersID, payload):
         """[summary]
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            ModelsID {string} -- ID of the model
+            manufacturersID {string} -- ID of the manufacturers
             payload {string} -- Input parameters
         
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/models/'
+        self.uri = '/api/v1/manufacturers/'
         self.server = server + self.uri + DeviceID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.patch(self.server, headers=headers, data=payload)

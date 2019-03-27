@@ -21,14 +21,14 @@ except:
 
 import json
 
-class Models(object):
+class Licenses(object):
     def __init__(self):
-        """Class to access models API.
+        """Class to access licenses API.
         """
         pass
 
     def get(self, server, token, limit=None, order='asc'):
-        """Get list of models
+        """Get list of licenses
         
         Arguments:
             server {string} -- Server URI
@@ -39,12 +39,12 @@ class Models(object):
             limit {string} -- Limit the number of data returned by the server (default: {50})
         
         Returns:
-            string -- List of models in JSON format.
+            string -- List of licenses in JSON format.
         """
         if limit is not None:
-            self.uri = '/api/v1/models?limit=' + str(limit) + '&order=' + order 
+            self.uri = '/api/v1/licenses?limit=' + str(limit) + '&order=' + order 
         else:
-            self.uri = '/api/v1/models'  + '?order=' + order 
+            self.uri = '/api/v1/licenses'  + '?order=' + order 
         self.server = server + self.uri
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
@@ -52,7 +52,7 @@ class Models(object):
         #return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
     def search(self, server, token, limit=None, order='asc', keyword=None):
-        """Get list of models based on search keyword
+        """Get list of licenses based on search keyword
         
         Arguments:
             server {string} -- Server URI
@@ -63,22 +63,22 @@ class Models(object):
             limit {string} -- Limit the number of data returned by the server (default: {50})
         
         Returns:
-            string -- List of models in JSON format.
+            string -- List of licenses in JSON format.
         """
         if keyword is None:
             keyword = ""
         
         if limit is not None:
-            self.uri = '/api/v1/models?limit=' + str(limit) + '&order=' + order
+            self.uri = '/api/v1/licenses?limit=' + str(limit) + '&order=' + order
         else:
-            self.uri = '/api/v1/models'  + '?order=' + order 
+            self.uri = '/api/v1/licenses'  + '?order=' + order 
         self.server = server + self.uri  + '&search=' + keyword
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
         return results.content
 
     def create(self, server, token, payload):
-        """Create new model data.
+        """Create new licenses data.
         
         Arguments:
             server {string} -- Server URI
@@ -88,61 +88,61 @@ class Models(object):
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/models'
+        self.uri = '/api/v1/licenses'
         self.server = server + self.uri
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def getDetailsByID(self, server, token, modelsID):
+    def getDetailsByID(self, server, token, licensesID):
         """Get detailed information of label by ID
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            modelsID {string} -- ID of the model
+            licensesID {string} -- ID of the licenses
         
         Returns:
-            string -- Detailed information of modelsID by ID
+            string -- Detailed information of licenses by ID
         """
-        self.uri = '/api/v1/models/'
-        self.server = server + self.uri + modelsID
+        self.uri = '/api/v1/licenses/'
+        self.server = server + self.uri + licensesID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)                
         return results.content
 
     
-    def delete(self, server, token, ModelsID):
-        """Delete model data
+    def delete(self, server, token, licensesID):
+        """Delete licenses data
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            ModelsID {string} -- ID of the model
+            licensesID {string} -- ID of the licenses
         
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/models/'
+        self.uri = '/api/v1/licenses/'
         self.server = server + self.uri + DeviceID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.delete(self.server, headers=headers)
         jsonData = json.loads(results.content)
         return jsonData['status']
 
-    def updateModel(self, server, token, ModelsID, payload):
+    def updatelicenses(self, server, token, licensesID, payload):
         """[summary]
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            ModelsID {string} -- ID of the model
+            licensesID {string} -- ID of the licenses
             payload {string} -- Input parameters
         
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/models/'
+        self.uri = '/api/v1/licenses/'
         self.server = server + self.uri + DeviceID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.patch(self.server, headers=headers, data=payload)

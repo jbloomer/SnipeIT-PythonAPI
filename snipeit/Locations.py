@@ -22,10 +22,25 @@ except:
 import json
 
 class Locations(object):
+    """Class to access Location API    
+    """
     def __init__(self):
         pass
 
-    def get(self, server, token, limit=None):
+    def get(self, server, token, limit=None,order='asc'):
+        """Get list of locations.
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            order {string} -- Display order of data (asc / desc default:{asc})
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+        
+        Returns:
+            string -- List of locations from the server, in JSON formatted
+        """
         if limit is not None:
             self.uri = '/api/v1/locations?limit=' + str(limit)
         else:
@@ -35,34 +50,96 @@ class Locations(object):
         results = requests.get(self.server, headers=headers)
         return results.content
 
+    def search(self, server, token, limit=None, order='asc', keyword=None):
+        """Get list of locations based on search keyword
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+        
+        Returns:
+            string -- List of locations in JSON format.
+        """
+        if keyword is None:
+            keyword = ""
+        
+        if limit is not None:
+            self.uri = '/api/v1/locations?limit=' + str(limit) + '&order=' + order
+        else:
+            self.uri = '/api/v1/locations'  + '?order=' + order 
+        self.server = server + self.uri  + '&search=' + keyword
+        headers = {'Authorization': 'Bearer ' + token}
+        results = requests.get(self.server, headers=headers)
+        return results.content
     def create(self, server, token, payload):
+        """Create new location data.
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            payload {string} -- Input parameters
+        
+        Returns:
+            string -- Server response in JSON
+        """
         self.uri = '/api/v1/locations'
         self.server = server + self.uri
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def getID(self, server, token, asset_name):
-        self.uri = '/api/v1/locations?search='
-        self.server = server + self.uri + asset_name
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
-        results = requests.get(self.server, headers=headers)
-        jsonData = json.loads(results.content)
-        if len(jsonData['rows']) < 2 and jsonData['rows'][0]['id'] is not None:
-            LocationID = jsonData['rows'][0]['id']
-        return LocationID
-
-    def updateLocation(self, server, token, DeviceID, payload):
+    def getDetailsByID(self, server, token, locationID):
+        """Get detailed location information by ID.
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            locationID {string} -- Location ID to be searched
+        
+        Returns:
+            string -- Detailed information of a location
+        """
         self.uri = '/api/v1/locations/'
-        self.server = server + self.uri + DeviceID
+        self.server = server + self.uri + locationID
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        results = requests.get(self.server, headers=headers)        
+        return results.content
+
+    def updateLocation(self, server, token, LocationID, payload):
+        """Update location data information
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            LocationID {string} -- ID of the location to be updated
+            payload {string} -- input parameters
+        
+        Returns:
+            string -- response message for server in JSON
+        """
+        self.uri = '/api/v1/locations/'
+        self.server = server + self.uri + LocationID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.patch(self.server, headers=headers, data=payload)
         jsonData = json.loads(results.content)
         return jsonData['status']
 
-    def delete(self, server, token, DeviceID):
+    def delete(self, server, token, LocationID):
+        """Delete a location based on its location ID
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            LocationID {string} -- Location ID to be deleted
+        
+        Returns:
+            string -- response message for server in JSON
+        """
         self.uri = '/api/v1/locations/'
-        self.server = server + self.uri + DeviceID
+        self.server = server + self.uri + LocationID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.delete(self.server, headers=headers)
         jsonData = json.loads(results.content)
