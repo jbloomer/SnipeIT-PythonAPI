@@ -101,7 +101,7 @@ class Assets(object):
         results = requests.get(self.server, headers=headers)
         return results.content
 
-    def getAssetsByCategory(self, server, token, categoryID limit=None, order='asc'):
+    def getAssetsByCategory(self, server, token, categoryID, limit=None, order='asc'):
         """Get list of assets
         
         Arguments:
