@@ -22,10 +22,21 @@ except:
 import json
 
 class Company(object):
+    """Class to access Companies API
+    """
     def __init__(self):
         pass
 
     def get(self, server, token):
+        """[summary]
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+        
+        Returns:
+            string -- List of companies from the server, in JSON formatted
+        """
         self.uri = '/api/v1/companies'
         self.server = server + self.uri
         headers = {'Authorization': 'Bearer ' + token}
@@ -33,23 +44,50 @@ class Company(object):
         return results.content
 
     def create(self, server, token, payload):
+        """Create new company data.
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            payload {string} -- Company Name
+        
+        Returns:
+            string -- Status data from the server, in JSON formatted
+        """
         self.uri = '/api/v1/companies'
         self.server = server + self.uri
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def getID(self, server, token, asset_name):
-        self.uri = '/api/v1/companies?search='
-        self.server = server + self.uri + asset_name
+    def getDetailsByID(self, server, token, companiesID):
+        """[summary]
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            companiesID {[type]} -- [description]
+        
+        Returns:
+            string -- Detailed information of company from the server, in JSON formatted
+        """
+        self.uri = '/api/v1/companies/'
+        self.server = server + self.uri + str(companiesID)
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
-        results = requests.get(self.server, headers=headers)
-        jsonData = json.loads(results.content)
-        if len(jsonData['rows']) < 2 and jsonData['rows'][0]['id'] is not None:
-            CompanyID = jsonData['rows'][0]['id']
-        return CompanyID
+        results = requests.get(self.server, headers=headers)        
+        return results.content
 
     def delete(self, server, token, CompanyID):
+        """[summary]
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            CompanyID {[type]} -- [description]
+        
+        Returns:
+            string -- Response message from the server, in JSON formatted
+        """
         self.uri = '/api/v1/companies/'
         self.server = server + self.uri + CompanyID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
@@ -58,6 +96,17 @@ class Company(object):
         return jsonData['status']
 
     def updateCompany(self, server, token, CompanyID, payload):
+        """Updates company name.
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            CompanyID {string} -- ID of company to be updated
+            payload {string} -- Company name to be updated
+        
+        Returns:
+            string -- Response message from the server, in JSON formatted
+        """
         self.uri = '/api/v1/companies/'
         self.server = server + self.uri + CompanyID
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}

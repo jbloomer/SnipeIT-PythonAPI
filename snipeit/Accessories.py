@@ -22,10 +22,24 @@ except:
 import json
 
 class Accessories(object):
+    """Class to access accessories API.    
+    """
     def __init__(self):
         pass
 
     def get(self, server, token, limit=None):
+        """Get list of accessories
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned from the server (default: {50})
+        
+        Returns:
+            string -- List of accessories from the server, in JSON formatted
+        """
         if limit is not None:
             self.uri = '/api/v1/accessories?limit=' + str(limit)
         else:
@@ -34,27 +48,62 @@ class Accessories(object):
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
         return results.content
-
+        
+    def search(self, server, token, limit=None, order='asc', keyword=None):
+        """Get list of accessories based on search keyword
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+        
+        Returns:
+            string -- List of accessories in JSON format.
+        """
+        if keyword is None:
+            keyword = ""
+        
+        if limit is not None:
+            self.uri = '/api/v1/accessories?limit=' + str(limit) + '&order=' + order
+        else:
+            self.uri = '/api/v1/accessories'  + '?order=' + order 
+        self.server = server + self.uri  + '&search=' + keyword
+        headers = {'Authorization': 'Bearer ' + token}
+        results = requests.get(self.server, headers=headers)
+        return results.content
     def create(self, server, token, payload):
+        """Create new accessories data.
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            payload {string} -- Accessories input parameters
+        
+        Returns:
+            string -- data creation result
+        """
         self.uri = '/api/v1/accessories'
         self.server = server + self.uri
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def getID(self, server, token, asset_name):
-        self.uri = '/api/v1/accessories?search='
-        self.server = server + self.uri + asset_name
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
-        results = requests.get(self.server, headers=headers)
-        jsonData = json.loads(results.content)
-        if len(jsonData['rows']) < 2 and jsonData['rows'][0]['id'] is not None:
-            AccessoriesID = jsonData['rows'][0]['id']
-        return AccessoriesID
-
-    def viewID(self, server, token, AccessoryID):
+    def getDetailsByID(self, server, token, accessoriesID):
+        """Get the details of accessory data.
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            accessories_ID {integer} -- ID of the accessories to be found
+        
+        Returns:
+            string -- Detailed information of an accessory
+        """
         self.uri = '/api/v1/accessories/'
-        self.server = server + self.uri + AccessoryID
+        self.server = server + self.uri + str(accessoriesID)
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
-        results = requests.get(self.server, headers=headers)
+        results = requests.get(self.server, headers=headers)        
         return results.content
+   
