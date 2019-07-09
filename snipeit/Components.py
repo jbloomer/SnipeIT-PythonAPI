@@ -27,7 +27,7 @@ class Components(object):
     def __init__(self):
         pass
 
-    def get(self, server, token, limit=None, order='asc', expand=True ):
+    def get(self, server, token, limit=None, order='asc', expand=True, offset=None):
         """Get list of component data
         
         Arguments:
@@ -43,16 +43,18 @@ class Components(object):
             string -- List of components from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/components?limit=' + str(limit) + '&order=' + order 
+            self.uri = '/api/v1/components?limit={0}&order={1}'.format(str(limit),order)
         else:
-            self.uri = '/api/v1/components'+ '?order=' + order
-        self.server = server + self.uri + '&expand=' + str(expand).lower()
+            self.uri = '/api/v1/components?order={0}'.format(order)
+        if offset is not None:
+            self.uri = self.uri + '&offset={0}'.format(str(offset))            
+        self.server = server + self.uri + '&expand={0}'.format(str(expand).lower())
         print(self.server)
-        headers = {'Authorization': 'Bearer ' + token}
+        headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
         
-    def search(self, server, token, limit=None, order='asc', keyword=None):
+    def search(self, server, token, limit=None, order='asc', keyword=None, offset=None):
         """Get list of components based on search keyword
         
         Arguments:
@@ -69,13 +71,16 @@ class Components(object):
             keyword = ""
         
         if limit is not None:
-            self.uri = '/api/v1/components?limit=' + str(limit) + '&order=' + order
+            self.uri = '/api/v1/components?limit={0}&order={1}'.format(str(limit),order)
         else:
-            self.uri = '/api/v1/components'  + '?order=' + order 
-        self.server = server + self.uri  + '&search=' + keyword
-        headers = {'Authorization': 'Bearer ' + token}
+            self.uri = '/api/v1/components?order={0}'.format(order)
+        if offset is not None:
+            self.uri = self.uri + '&offset={0}'.format(str(offset))            
+        self.server = server + self.uri  + '&search={0}'.format(keyword)
+        headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
+
     def create(self, server, token, payload):
         """create new component data
         
@@ -89,7 +94,7 @@ class Components(object):
         """
         self.uri = '/api/v1/components'
         self.server = server + self.uri
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
@@ -104,9 +109,9 @@ class Components(object):
         Returns:
             string -- Detailed information of component by ID
         """
-        self.uri = '/api/v1/components/'
-        self.server = server + self.uri + componentsID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/components/{0}'.format(componentsID)
+        self.server = server + self.uri 
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)                
         return results.content
 

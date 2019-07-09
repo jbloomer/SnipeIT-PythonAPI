@@ -27,7 +27,7 @@ class Locations(object):
     def __init__(self):
         pass
 
-    def get(self, server, token, limit=None,order='asc'):
+    def get(self, server, token, limit=None,order='asc', offset=None):
         """Get list of locations.
         
         Arguments:
@@ -42,11 +42,15 @@ class Locations(object):
             string -- List of locations from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/locations?limit=' + str(limit)
+            self.uri = '/api/v1/locations?limit={0}'.format(str(limit))
+            if offset is not None:
+                self.uri = self.uri + '&offset={0}'.format(str(offset))
         else:
             self.uri = '/api/v1/locations'
+            if offset is not None:
+                self.uri = self.uri + '?offset={0}'.format(str(offset))
         self.server = server + self.uri
-        headers = {'Authorization': 'Bearer ' + token}
+        headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
 
@@ -67,13 +71,14 @@ class Locations(object):
             keyword = ""
         
         if limit is not None:
-            self.uri = '/api/v1/locations?limit=' + str(limit) + '&order=' + order
+            self.uri = '/api/v1/locations?limit={0}&order={1}'.format(str(limit),order)
         else:
-            self.uri = '/api/v1/locations'  + '?order=' + order 
-        self.server = server + self.uri  + '&search=' + keyword
-        headers = {'Authorization': 'Bearer ' + token}
+            self.uri = '/api/v1/locations?order={0}'.format(order)                  
+        self.server = server + self.uri  + '&search={0}'.format(keyword)
+        headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
+
     def create(self, server, token, payload):
         """Create new location data.
         
@@ -87,7 +92,7 @@ class Locations(object):
         """
         self.uri = '/api/v1/locations'
         self.server = server + self.uri
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
@@ -102,9 +107,9 @@ class Locations(object):
         Returns:
             string -- Detailed information of a location
         """
-        self.uri = '/api/v1/locations/'
-        self.server = server + self.uri + locationID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/locations/{0}'.format(locationID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)        
         return results.content
 
@@ -120,9 +125,9 @@ class Locations(object):
         Returns:
             string -- response message for server in JSON
         """
-        self.uri = '/api/v1/locations/'
-        self.server = server + self.uri + LocationID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/locations/{0}'.format(LocationID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.patch(self.server, headers=headers, data=payload)
         jsonData = json.loads(results.content)
         return jsonData['status']
@@ -138,9 +143,9 @@ class Locations(object):
         Returns:
             string -- response message for server in JSON
         """
-        self.uri = '/api/v1/locations/'
-        self.server = server + self.uri + LocationID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/locations/{0}'.format(LocationID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.delete(self.server, headers=headers)
         jsonData = json.loads(results.content)
         return jsonData['status']

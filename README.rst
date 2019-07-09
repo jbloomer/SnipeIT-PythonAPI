@@ -37,6 +37,18 @@ API Features
 Release History
 ---------------
 
+-  0.12
+
+   -  Synchronizing API features based on Snipe-IT version 4.7.5
+      -  Added audit command under Assets class
+      -  Added audit due & overdue under Assets class
+      -  Added asset checkin & checkout under Assets class
+      -  Fix various typos on input parameters in some classes
+      -  Add DataUtil module for some small response data management functions
+      -  Add SimpleAssetBrowser script as an example of asset browsing by utilizing pySimpleGUI & pandas
+      -  Add DataUtilUsageExample
+      -  Updating Doc folder
+
 -  0.11
 
    -  Completing API features based on Snipe-IT version 4.6.14

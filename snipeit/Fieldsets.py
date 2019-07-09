@@ -40,7 +40,7 @@ class Fieldsets(object):
         """       
         self.uri = '/api/v1/fields'  
         self.server = server + self.uri
-        headers = {'Authorization': 'Bearer ' + token}
+        headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
         #return json.dumps(results.json(),indent=4, separators=(',', ':'))
@@ -58,7 +58,7 @@ class Fieldsets(object):
         """
         self.uri = '/api/v1/fieldsets'
         self.server = server + self.uri
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
@@ -73,9 +73,9 @@ class Fieldsets(object):
         Returns:
             string -- Detailed information of fieldsets by ID
         """
-        self.uri = '/api/v1/fieldsets/'
-        self.server = server + self.uri + fieldsetsID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/fieldsets/{0}'.format(fieldsetsID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)                
         return results.content
 
@@ -91,9 +91,9 @@ class Fieldsets(object):
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/fieldsets/'
-        self.server = server + self.uri + DeviceID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/fieldsets/{0}'.format(fieldsetsID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.delete(self.server, headers=headers)
         jsonData = json.loads(results.content)
         return jsonData['status']
@@ -110,9 +110,9 @@ class Fieldsets(object):
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/fieldsets/'
-        self.server = server + self.uri + DeviceID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/fieldsets/{0}'.format(fieldsetsID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.patch(self.server, headers=headers, data=payload)
         jsonData = json.loads(results.content)
         return jsonData['status']

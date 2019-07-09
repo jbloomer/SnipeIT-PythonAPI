@@ -42,7 +42,7 @@ class Manufacturers(object):
         """       
         self.uri = '/api/v1/manufacturers'  
         self.server = server + self.uri
-        headers = {'Authorization': 'Bearer ' + token}
+        headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
         #return json.dumps(results.json(),indent=4, separators=(',', ':'))
@@ -60,7 +60,7 @@ class Manufacturers(object):
         """
         self.uri = '/api/v1/manufacturers'
         self.server = server + self.uri
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
@@ -75,9 +75,9 @@ class Manufacturers(object):
         Returns:
             string -- Detailed information of manufacturers by ID
         """
-        self.uri = '/api/v1/manufacturers/'
-        self.server = server + self.uri + manufacturersID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/manufacturers/{0}'.format(manufacturersID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)                
         return results.content
 
@@ -93,9 +93,9 @@ class Manufacturers(object):
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/manufacturers/'
-        self.server = server + self.uri + DeviceID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/manufacturers/{0}'.format(manufacturersID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.delete(self.server, headers=headers)
         jsonData = json.loads(results.content)
         return jsonData['status']
@@ -112,9 +112,9 @@ class Manufacturers(object):
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/manufacturers/'
-        self.server = server + self.uri + DeviceID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/manufacturers/{0}'.format(manufacturersID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.patch(self.server, headers=headers, data=payload)
         jsonData = json.loads(results.content)
         return jsonData['status']
