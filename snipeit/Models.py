@@ -27,7 +27,7 @@ class Models(object):
         """
         pass
 
-    def get(self, server, token, limit=None, order='asc'):
+    def get(self, server, token, limit=50, order='asc', offset=0):
         """Get list of models
         
         Arguments:
@@ -36,22 +36,20 @@ class Models(object):
             order {string} -- Display order of data (asc / desc default:{asc})
         
         Keyword Arguments:
-            limit {string} -- Limit the number of data returned by the server (default: {50})
+            limit {integer} -- Limit the number of data returned by the server (default: {50})
+            offset {integer} -- Offset to use when retrieving results (useful in pagination) (default: {0})
         
         Returns:
             string -- List of models in JSON format.
         """
-        if limit is not None:
-            self.uri = '/api/v1/models?limit=' + str(limit) + '&order=' + order 
-        else:
-            self.uri = '/api/v1/models'  + '?order=' + order 
+        self.uri = '/api/v1/models?limit=' + str(limit) + '&offset=' + str(offset) + '&order=' + order
         self.server = server + self.uri
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
         return results.content
         #return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def search(self, server, token, limit=None, order='asc', keyword=None):
+    def search(self, server, token, limit=50, order='asc', keyword=None, offset=0):
         """Get list of models based on search keyword
         
         Arguments:
@@ -60,7 +58,8 @@ class Models(object):
             order {string} -- Display order of data (asc / desc default:{asc})
         
         Keyword Arguments:
-            limit {string} -- Limit the number of data returned by the server (default: {50})
+            limit {integer} -- Limit the number of data returned by the server (default: {50})
+            offset {integer} -- Offset to use when retrieving results (useful in pagination) (default: {0})
         
         Returns:
             string -- List of models in JSON format.
@@ -68,10 +67,7 @@ class Models(object):
         if keyword is None:
             keyword = ""
         
-        if limit is not None:
-            self.uri = '/api/v1/models?limit=' + str(limit) + '&order=' + order
-        else:
-            self.uri = '/api/v1/models'  + '?order=' + order 
+        self.uri = '/api/v1/models?limit=' + str(limit) + '&offset=' + str(offset) + '&order=' + order
         self.server = server + self.uri  + '&search=' + keyword
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)

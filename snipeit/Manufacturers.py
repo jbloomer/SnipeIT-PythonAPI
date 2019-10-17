@@ -27,7 +27,7 @@ class Manufacturers(object):
         """
         pass
 
-    def get(self, server, token):
+    def get(self, server, token, limit=50, offset=0):
         """Get list of manufacturers
         
         Arguments:
@@ -35,12 +35,13 @@ class Manufacturers(object):
             token {string} -- Token value to be used for accessing the API
         
         Keyword Arguments:
-            limit {string} -- Limit the number of data returned by the server (default: {50})
+            limit {integer} -- Limit the number of data returned by the server (default: {50})
+            offset {integer} -- Offset to use when retrieving results (useful in pagination) (default: {0})
         
         Returns:
             string -- List of manufacturers in JSON format.
         """       
-        self.uri = '/api/v1/manufacturers'  
+        self.uri = '/api/v1/manufacturers?limit=' + str(limit) + '&offset=' + str(offset)
         self.server = server + self.uri
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
