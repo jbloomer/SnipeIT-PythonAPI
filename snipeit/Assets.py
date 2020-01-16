@@ -262,7 +262,7 @@ class Assets(object):
         results = requests.get(self.server, headers=headers)
         return results.content
 
-    def getDetailsByTag(self, server, token, AssetTAG):
+    def getDetailsByTag(self, server, token, AssetTag):
         """Get asset details by ID
         
         Arguments:
