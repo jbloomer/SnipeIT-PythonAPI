@@ -120,7 +120,7 @@ class Assets(object):
             self.uri = '/api/v1/hardware?limit=' + str(limit) + '&order=' + order
         else:
             self.uri = '/api/v1/hardware' + '?order=' + order
-        self.server = server + self.uri + '&category_id' + categoryID
+        self.server = server + self.uri + '&category_id=' + categoryID
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
         return results.content
