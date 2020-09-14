@@ -27,7 +27,7 @@ class Models(object):
         """
         pass
 
-    def get(self, server, token, limit=None, order='asc'):
+    def get(self, server, token, limit=None, order='asc', offset=None):
         """Get list of models
         
         Arguments:
@@ -42,16 +42,18 @@ class Models(object):
             string -- List of models in JSON format.
         """
         if limit is not None:
-            self.uri = '/api/v1/models?limit=' + str(limit) + '&order=' + order 
+            self.uri = '/api/v1/models?limit={0}&order={1}'.format(str(limit), order)
         else:
-            self.uri = '/api/v1/models'  + '?order=' + order 
+            self.uri = '/api/v1/models?order={0}'.format(order) 
+        if offset is not None:
+            self.uri = self.uri + '&offset={0}'.format(str(offset))
         self.server = server + self.uri
-        headers = {'Authorization': 'Bearer ' + token}
+        headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
         #return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def search(self, server, token, limit=None, order='asc', keyword=None):
+    def search(self, server, token, limit=None, order='asc', keyword=None, offset=None):
         """Get list of models based on search keyword
         
         Arguments:
@@ -69,11 +71,13 @@ class Models(object):
             keyword = ""
         
         if limit is not None:
-            self.uri = '/api/v1/models?limit=' + str(limit) + '&order=' + order
+            self.uri = '/api/v1/models?limit={0}&order={1}'.format(str(limit), order)
         else:
-            self.uri = '/api/v1/models'  + '?order=' + order 
-        self.server = server + self.uri  + '&search=' + keyword
-        headers = {'Authorization': 'Bearer ' + token}
+            self.uri = '/api/v1/models?order={0}'.format(order)
+        if offset is not None:
+            self.uri = self.uri + '&offset={0}'.format(str(offset))
+        self.server = server + self.uri  + '&search={0}'.format(keyword)
+        headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
 
@@ -90,7 +94,7 @@ class Models(object):
         """
         self.uri = '/api/v1/models'
         self.server = server + self.uri
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
@@ -105,14 +109,14 @@ class Models(object):
         Returns:
             string -- Detailed information of modelsID by ID
         """
-        self.uri = '/api/v1/models/'
-        self.server = server + self.uri + modelsID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/models/{0}'.format(modelsID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)                
         return results.content
 
     
-    def delete(self, server, token, ModelsID):
+    def delete(self, server, token, companyID):
         """Delete model data
         
         Arguments:
@@ -123,14 +127,14 @@ class Models(object):
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/models/'
-        self.server = server + self.uri + DeviceID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/models/{0}'.format(companyID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.delete(self.server, headers=headers)
         jsonData = json.loads(results.content)
         return jsonData['status']
 
-    def updateModel(self, server, token, ModelsID, payload):
+    def updateModel(self, server, token, companyID, payload):
         """[summary]
         
         Arguments:
@@ -142,9 +146,9 @@ class Models(object):
         Returns:
             string -- server response in JSON format
         """
-        self.uri = '/api/v1/models/'
-        self.server = server + self.uri + DeviceID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/models/{0}'.format(companyID)
+        self.server = server + self.uri 
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.patch(self.server, headers=headers, data=payload)
         jsonData = json.loads(results.content)
         return jsonData['status']

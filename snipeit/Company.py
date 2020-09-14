@@ -28,7 +28,7 @@ class Company(object):
         pass
 
     def get(self, server, token):
-        """[summary]
+        """Gets company list
         
         Arguments:
             server {string} -- Server URI
@@ -39,7 +39,7 @@ class Company(object):
         """
         self.uri = '/api/v1/companies'
         self.server = server + self.uri
-        headers = {'Authorization': 'Bearer ' + token}
+        headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
 
@@ -56,12 +56,12 @@ class Company(object):
         """
         self.uri = '/api/v1/companies'
         self.server = server + self.uri
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
     def getDetailsByID(self, server, token, companiesID):
-        """[summary]
+        """Gets company details by ID
         
         Arguments:
             server {string} -- Server URI
@@ -71,14 +71,14 @@ class Company(object):
         Returns:
             string -- Detailed information of company from the server, in JSON formatted
         """
-        self.uri = '/api/v1/companies/'
-        self.server = server + self.uri + str(companiesID)
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/companies/{0}'.format(str(companiesID))
+        self.server = server + self.uri 
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)        
         return results.content
 
     def delete(self, server, token, CompanyID):
-        """[summary]
+        """Delete company information
         
         Arguments:
             server {string} -- Server URI
@@ -88,9 +88,9 @@ class Company(object):
         Returns:
             string -- Response message from the server, in JSON formatted
         """
-        self.uri = '/api/v1/companies/'
-        self.server = server + self.uri + CompanyID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/companies/{0}'.format(CompanyID)
+        self.server = server + self.uri 
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.delete(self.server, headers=headers)
         jsonData = json.loads(results.content)
         return jsonData['status']
@@ -107,9 +107,9 @@ class Company(object):
         Returns:
             string -- Response message from the server, in JSON formatted
         """
-        self.uri = '/api/v1/companies/'
-        self.server = server + self.uri + CompanyID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
+        self.uri = '/api/v1/companies/{0}'.format(CompanyID)
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.patch(self.server, headers=headers, data=payload)
         jsonData = json.loads(results.content)
         return jsonData['status']

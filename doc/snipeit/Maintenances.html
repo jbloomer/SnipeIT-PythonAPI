@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.5.3" />
+<meta name="generator" content="pdoc 0.6.3" />
 <title>snipeit.Maintenances API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
-<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.name small{font-weight:normal}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase;cursor:pointer}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase;cursor:pointer}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
 <style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
 </head>
@@ -17,7 +17,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title"><code>snipeit.Maintenances</code> module</h1>
+<h1 class="title">Module <code>snipeit.Maintenances</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -51,7 +51,7 @@ class Maintenances(object):
         &#34;&#34;&#34;
         pass
 
-    def get(self, server, token, limit=None, order=&#39;asc&#39;):
+    def get(self, server, token, limit=None, order=&#39;asc&#39;, offset=None):
         &#34;&#34;&#34;Get list of maintenances
         
         Arguments:
@@ -65,21 +65,26 @@ class Maintenances(object):
             string -- List of maintenances in JSON format.
         &#34;&#34;&#34;
         if limit is not None:
-            self.uri = &#39;/api/v1/maintenances?limit=&#39; + str(limit)
+            self.uri = &#39;/api/v1/maintenances?limit={0}&#39;.format(str(limit))
+            if offset is not None:
+                self.uri = self.uri + &#39;&amp;offset={0}&#39;.format(str(offset))
         else:
             self.uri = &#39;/api/v1/maintenances&#39;
+            if offset is not None:
+                self.uri = self.uri + &#39;?offset={0}&#39;.format(str(offset))
         self.server = server + self.uri
-        headers = {&#39;Authorization&#39;: &#39;Bearer &#39; + token}
+        headers = {&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
         #return json.dumps(results.json(),indent=4, separators=(&#39;,&#39;, &#39;:&#39;))
 
-    def search(self, server, token, limit=None, order=&#39;asc&#39;, keyword=None):
+    def search(self, server, token, limit=None, order=&#39;asc&#39;, keyword=None, offset=None):
         &#34;&#34;&#34;Get list of maintenances based on search keyword
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
+            order {string} -- Display order of data (asc / desc default:{asc})
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -91,13 +96,43 @@ class Maintenances(object):
             keyword = &#34;&#34;
         
         if limit is not None:
-            self.uri = &#39;/api/v1/maintenances?limit=&#39; + str(limit) + &#39;&amp;order=&#39; + order 
+            self.uri = &#39;/api/v1/maintenances?limit={0}&amp;order={1}&#39;.format(str(limit),order) 
         else:
-            self.uri = &#39;/api/v1/maintenances&#39;  + &#39;?order=&#39; + order 
-        self.server = server + self.uri  + &#39;&amp;search=&#39; + keyword
-        headers = {&#39;Authorization&#39;: &#39;Bearer &#39; + token}
+            self.uri = &#39;/api/v1/maintenances?order={0}&#39;.format(order)
+        if offset is not None:
+            self.uri = self.uri + &#39;&amp;offset={0}&#39;.format(str(offset))
+        self.server = server + self.uri  + &#39;&amp;search={0}&#39;.format(keyword)
+        headers = {&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content        
+
+    def getMaintenanceByID(self, server, token, limit=None, order=&#39;asc&#39;, assetID=None, offset=None):
+        &#34;&#34;&#34;Get maintenances information by asset ID
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            order {string} -- Display order of data (asc / desc default:{asc})
+            assetID {string} -- Asset ID to be find
+
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+        
+        Returns:
+            string -- List of maintenances in JSON format.
+        &#34;&#34;&#34;
+        if limit is not None:
+            self.uri = &#39;/api/v1/maintenances?limit={0}&amp;order={1}&#39;.format(str(limit), order)
+        else:
+            self.uri = &#39;/api/v1/maintenances?order={0}&#39;.format(order)
+        if offset is not None:
+            self.uri = self.uri + &#39;&amp;offset={0}&#39;.format(str(offset))
+        self.server = server + self.uri + &#39;&amp;asset_id={0}&#39;.format(assetID)
+        headers = {&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
+        results = requests.get(self.server, headers=headers)
+        return results.content
+        #return json.dumps(results.json(),indent=4, separators=(&#39;,&#39;, &#39;:&#39;))
 
     def create(self, server, token, payload):
         &#34;&#34;&#34;Create new maintenances data.
@@ -112,7 +147,7 @@ class Maintenances(object):
         &#34;&#34;&#34;
         self.uri = &#39;/api/v1/maintenances&#39;
         self.server = server + self.uri
-        headers = {&#39;Content-Type&#39;: &#39;application/json&#39;,&#39;Authorization&#39;: &#39;Bearer &#39; + token}
+        headers = {&#39;Content-Type&#39;: &#39;application/json&#39;,&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(&#39;,&#39;, &#39;:&#39;))</code></pre>
 </details>
@@ -130,7 +165,7 @@ class Maintenances(object):
 <span>class <span class="ident">Maintenances</span></span>
 </code></dt>
 <dd>
-<section class="desc"></section>
+<section class="desc"><p>Class to access maintenances API.</p></section>
 <details class="source">
 <summary>Source code</summary>
 <pre><code class="python">class Maintenances(object):
@@ -139,7 +174,7 @@ class Maintenances(object):
         &#34;&#34;&#34;
         pass
 
-    def get(self, server, token, limit=None, order=&#39;asc&#39;):
+    def get(self, server, token, limit=None, order=&#39;asc&#39;, offset=None):
         &#34;&#34;&#34;Get list of maintenances
         
         Arguments:
@@ -153,21 +188,26 @@ class Maintenances(object):
             string -- List of maintenances in JSON format.
         &#34;&#34;&#34;
         if limit is not None:
-            self.uri = &#39;/api/v1/maintenances?limit=&#39; + str(limit)
+            self.uri = &#39;/api/v1/maintenances?limit={0}&#39;.format(str(limit))
+            if offset is not None:
+                self.uri = self.uri + &#39;&amp;offset={0}&#39;.format(str(offset))
         else:
             self.uri = &#39;/api/v1/maintenances&#39;
+            if offset is not None:
+                self.uri = self.uri + &#39;?offset={0}&#39;.format(str(offset))
         self.server = server + self.uri
-        headers = {&#39;Authorization&#39;: &#39;Bearer &#39; + token}
+        headers = {&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
         #return json.dumps(results.json(),indent=4, separators=(&#39;,&#39;, &#39;:&#39;))
 
-    def search(self, server, token, limit=None, order=&#39;asc&#39;, keyword=None):
+    def search(self, server, token, limit=None, order=&#39;asc&#39;, keyword=None, offset=None):
         &#34;&#34;&#34;Get list of maintenances based on search keyword
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
+            order {string} -- Display order of data (asc / desc default:{asc})
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -179,13 +219,43 @@ class Maintenances(object):
             keyword = &#34;&#34;
         
         if limit is not None:
-            self.uri = &#39;/api/v1/maintenances?limit=&#39; + str(limit) + &#39;&amp;order=&#39; + order 
+            self.uri = &#39;/api/v1/maintenances?limit={0}&amp;order={1}&#39;.format(str(limit),order) 
         else:
-            self.uri = &#39;/api/v1/maintenances&#39;  + &#39;?order=&#39; + order 
-        self.server = server + self.uri  + &#39;&amp;search=&#39; + keyword
-        headers = {&#39;Authorization&#39;: &#39;Bearer &#39; + token}
+            self.uri = &#39;/api/v1/maintenances?order={0}&#39;.format(order)
+        if offset is not None:
+            self.uri = self.uri + &#39;&amp;offset={0}&#39;.format(str(offset))
+        self.server = server + self.uri  + &#39;&amp;search={0}&#39;.format(keyword)
+        headers = {&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content        
+
+    def getMaintenanceByID(self, server, token, limit=None, order=&#39;asc&#39;, assetID=None, offset=None):
+        &#34;&#34;&#34;Get maintenances information by asset ID
+        
+        Arguments:
+            server {string} -- Server URI
+            token {string} -- Token value to be used for accessing the API
+            order {string} -- Display order of data (asc / desc default:{asc})
+            assetID {string} -- Asset ID to be find
+
+        
+        Keyword Arguments:
+            limit {string} -- Limit the number of data returned by the server (default: {50})
+        
+        Returns:
+            string -- List of maintenances in JSON format.
+        &#34;&#34;&#34;
+        if limit is not None:
+            self.uri = &#39;/api/v1/maintenances?limit={0}&amp;order={1}&#39;.format(str(limit), order)
+        else:
+            self.uri = &#39;/api/v1/maintenances?order={0}&#39;.format(order)
+        if offset is not None:
+            self.uri = self.uri + &#39;&amp;offset={0}&#39;.format(str(offset))
+        self.server = server + self.uri + &#39;&amp;asset_id={0}&#39;.format(assetID)
+        headers = {&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
+        results = requests.get(self.server, headers=headers)
+        return results.content
+        #return json.dumps(results.json(),indent=4, separators=(&#39;,&#39;, &#39;:&#39;))
 
     def create(self, server, token, payload):
         &#34;&#34;&#34;Create new maintenances data.
@@ -200,25 +270,12 @@ class Maintenances(object):
         &#34;&#34;&#34;
         self.uri = &#39;/api/v1/maintenances&#39;
         self.server = server + self.uri
-        headers = {&#39;Content-Type&#39;: &#39;application/json&#39;,&#39;Authorization&#39;: &#39;Bearer &#39; + token}
+        headers = {&#39;Content-Type&#39;: &#39;application/json&#39;,&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
         results = requests.post(self.server, headers=headers, data=payload)
         return json.dumps(results.json(),indent=4, separators=(&#39;,&#39;, &#39;:&#39;))</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="snipeit.Maintenances.Maintenances.__init__"><code class="name flex">
-<span>def <span class="ident">__init__</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<section class="desc"><p>Class to access maintenances API.</p></section>
-<details class="source">
-<summary>Source code</summary>
-<pre><code class="python">def __init__(self):
-    &#34;&#34;&#34;Class to access maintenances API.
-    &#34;&#34;&#34;
-    pass</code></pre>
-</details>
-</dd>
 <dt id="snipeit.Maintenances.Maintenances.create"><code class="name flex">
 <span>def <span class="ident">create</span></span>(<span>self, server, token, payload)</span>
 </code></dt>
@@ -229,7 +286,10 @@ class Maintenances(object):
 token {string} &ndash; Token value to be used for accessing the API
 payload {string} &ndash; Input parameters</p>
 <h2 id="returns">Returns</h2>
-<p>string &ndash; server response in JSON format</p></section>
+<dl>
+<dt><code>string</code> &ndash; <code>server</code> <code>response</code> <code>in</code> <code>JSON</code> <code>format</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
 <details class="source">
 <summary>Source code</summary>
 <pre><code class="python">def create(self, server, token, payload):
@@ -245,13 +305,13 @@ payload {string} &ndash; Input parameters</p>
     &#34;&#34;&#34;
     self.uri = &#39;/api/v1/maintenances&#39;
     self.server = server + self.uri
-    headers = {&#39;Content-Type&#39;: &#39;application/json&#39;,&#39;Authorization&#39;: &#39;Bearer &#39; + token}
+    headers = {&#39;Content-Type&#39;: &#39;application/json&#39;,&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
     results = requests.post(self.server, headers=headers, data=payload)
     return json.dumps(results.json(),indent=4, separators=(&#39;,&#39;, &#39;:&#39;))</code></pre>
 </details>
 </dd>
 <dt id="snipeit.Maintenances.Maintenances.get"><code class="name flex">
-<span>def <span class="ident">get</span></span>(<span>self, server, token, limit=None, order=&#39;asc&#39;)</span>
+<span>def <span class="ident">get</span></span>(<span>self, server, token, limit=None, order='asc', offset=None)</span>
 </code></dt>
 <dd>
 <section class="desc"><p>Get list of maintenances</p>
@@ -264,7 +324,7 @@ limit {string} &ndash; Limit the number of data returned by the server (default:
 <p>string &ndash; List of maintenances in JSON format.</p></section>
 <details class="source">
 <summary>Source code</summary>
-<pre><code class="python">def get(self, server, token, limit=None, order=&#39;asc&#39;):
+<pre><code class="python">def get(self, server, token, limit=None, order=&#39;asc&#39;, offset=None):
     &#34;&#34;&#34;Get list of maintenances
     
     Arguments:
@@ -278,35 +338,85 @@ limit {string} &ndash; Limit the number of data returned by the server (default:
         string -- List of maintenances in JSON format.
     &#34;&#34;&#34;
     if limit is not None:
-        self.uri = &#39;/api/v1/maintenances?limit=&#39; + str(limit)
+        self.uri = &#39;/api/v1/maintenances?limit={0}&#39;.format(str(limit))
+        if offset is not None:
+            self.uri = self.uri + &#39;&amp;offset={0}&#39;.format(str(offset))
     else:
         self.uri = &#39;/api/v1/maintenances&#39;
+        if offset is not None:
+            self.uri = self.uri + &#39;?offset={0}&#39;.format(str(offset))
     self.server = server + self.uri
-    headers = {&#39;Authorization&#39;: &#39;Bearer &#39; + token}
+    headers = {&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
     results = requests.get(self.server, headers=headers)
     return results.content</code></pre>
 </details>
 </dd>
-<dt id="snipeit.Maintenances.Maintenances.search"><code class="name flex">
-<span>def <span class="ident">search</span></span>(<span>self, server, token, limit=None, order=&#39;asc&#39;, keyword=None)</span>
+<dt id="snipeit.Maintenances.Maintenances.getMaintenanceByID"><code class="name flex">
+<span>def <span class="ident">getMaintenanceByID</span></span>(<span>self, server, token, limit=None, order='asc', assetID=None, offset=None)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Get list of maintenances based on search keyword</p>
+<section class="desc"><p>Get maintenances information by asset ID</p>
 <h2 id="arguments">Arguments</h2>
 <p>server {string} &ndash; Server URI
 token {string} &ndash; Token value to be used for accessing the API
+order {string} &ndash; Display order of data (asc / desc default:{asc})
+assetID {string} &ndash; Asset ID to be find
 Keyword Arguments:
 limit {string} &ndash; Limit the number of data returned by the server (default: {50})</p>
 <h2 id="returns">Returns</h2>
 <p>string &ndash; List of maintenances in JSON format.</p></section>
 <details class="source">
 <summary>Source code</summary>
-<pre><code class="python">def search(self, server, token, limit=None, order=&#39;asc&#39;, keyword=None):
+<pre><code class="python">def getMaintenanceByID(self, server, token, limit=None, order=&#39;asc&#39;, assetID=None, offset=None):
+    &#34;&#34;&#34;Get maintenances information by asset ID
+    
+    Arguments:
+        server {string} -- Server URI
+        token {string} -- Token value to be used for accessing the API
+        order {string} -- Display order of data (asc / desc default:{asc})
+        assetID {string} -- Asset ID to be find
+
+    
+    Keyword Arguments:
+        limit {string} -- Limit the number of data returned by the server (default: {50})
+    
+    Returns:
+        string -- List of maintenances in JSON format.
+    &#34;&#34;&#34;
+    if limit is not None:
+        self.uri = &#39;/api/v1/maintenances?limit={0}&amp;order={1}&#39;.format(str(limit), order)
+    else:
+        self.uri = &#39;/api/v1/maintenances?order={0}&#39;.format(order)
+    if offset is not None:
+        self.uri = self.uri + &#39;&amp;offset={0}&#39;.format(str(offset))
+    self.server = server + self.uri + &#39;&amp;asset_id={0}&#39;.format(assetID)
+    headers = {&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
+    results = requests.get(self.server, headers=headers)
+    return results.content</code></pre>
+</details>
+</dd>
+<dt id="snipeit.Maintenances.Maintenances.search"><code class="name flex">
+<span>def <span class="ident">search</span></span>(<span>self, server, token, limit=None, order='asc', keyword=None, offset=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Get list of maintenances based on search keyword</p>
+<h2 id="arguments">Arguments</h2>
+<p>server {string} &ndash; Server URI
+token {string} &ndash; Token value to be used for accessing the API
+order {string} &ndash; Display order of data (asc / desc default:{asc})
+Keyword Arguments:
+limit {string} &ndash; Limit the number of data returned by the server (default: {50})</p>
+<h2 id="returns">Returns</h2>
+<p>string &ndash; List of maintenances in JSON format.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def search(self, server, token, limit=None, order=&#39;asc&#39;, keyword=None, offset=None):
     &#34;&#34;&#34;Get list of maintenances based on search keyword
     
     Arguments:
         server {string} -- Server URI
         token {string} -- Token value to be used for accessing the API
+        order {string} -- Display order of data (asc / desc default:{asc})
     
     Keyword Arguments:
         limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -318,11 +428,13 @@ limit {string} &ndash; Limit the number of data returned by the server (default:
         keyword = &#34;&#34;
     
     if limit is not None:
-        self.uri = &#39;/api/v1/maintenances?limit=&#39; + str(limit) + &#39;&amp;order=&#39; + order 
+        self.uri = &#39;/api/v1/maintenances?limit={0}&amp;order={1}&#39;.format(str(limit),order) 
     else:
-        self.uri = &#39;/api/v1/maintenances&#39;  + &#39;?order=&#39; + order 
-    self.server = server + self.uri  + &#39;&amp;search=&#39; + keyword
-    headers = {&#39;Authorization&#39;: &#39;Bearer &#39; + token}
+        self.uri = &#39;/api/v1/maintenances?order={0}&#39;.format(order)
+    if offset is not None:
+        self.uri = self.uri + &#39;&amp;offset={0}&#39;.format(str(offset))
+    self.server = server + self.uri  + &#39;&amp;search={0}&#39;.format(keyword)
+    headers = {&#39;Authorization&#39;: &#39;Bearer {0}&#39;.format(token)}
     results = requests.get(self.server, headers=headers)
     return results.content        </code></pre>
 </details>
@@ -348,9 +460,9 @@ limit {string} &ndash; Limit the number of data returned by the server (default:
 <li>
 <h4><code><a title="snipeit.Maintenances.Maintenances" href="#snipeit.Maintenances.Maintenances">Maintenances</a></code></h4>
 <ul class="">
-<li><code><a title="snipeit.Maintenances.Maintenances.__init__" href="#snipeit.Maintenances.Maintenances.__init__">__init__</a></code></li>
 <li><code><a title="snipeit.Maintenances.Maintenances.create" href="#snipeit.Maintenances.Maintenances.create">create</a></code></li>
 <li><code><a title="snipeit.Maintenances.Maintenances.get" href="#snipeit.Maintenances.Maintenances.get">get</a></code></li>
+<li><code><a title="snipeit.Maintenances.Maintenances.getMaintenanceByID" href="#snipeit.Maintenances.Maintenances.getMaintenanceByID">getMaintenanceByID</a></code></li>
 <li><code><a title="snipeit.Maintenances.Maintenances.search" href="#snipeit.Maintenances.Maintenances.search">search</a></code></li>
 </ul>
 </li>
@@ -360,7 +472,7 @@ limit {string} &ndash; Limit the number of data returned by the server (default:
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.5.3</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.6.3</a>.</p>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad()</script>

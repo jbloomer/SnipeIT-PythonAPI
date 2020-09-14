@@ -22,17 +22,17 @@ except:
 import json
 
 
-class Assets(object):
+class AssetsMaintenances(object):
     def __init__(self):
         pass
 
-    def get(self, server, token, limit=None, order='asc', offset=None):
+    def get(self, server, token, limit=None, order='asc'):
         """Get list of assets
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            offset {string} -- Starting offset to get the data
+            
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -42,24 +42,21 @@ class Assets(object):
             [string] -- List of assets from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit),order)
+            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit), order)
         else:
             self.uri = '/api/v1/hardware?order={0}'.format(order)
-        if offset is not None:
-            self.uri = self.uri + '&offset={0}'.format(str(offset))     
         self.server = server + self.uri 
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
         #return json.dumps(results.json(),indent=4, separators=(',', ':'))
 
-    def search(self, server, token, limit=None, order='asc', keyword=None, offset=None):
+    def search(self, server, token, limit=None, order='asc', keyword=None):
         """Get list of assets based on search keyword
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            offset {string} -- Starting offset to get the data
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -72,24 +69,21 @@ class Assets(object):
             keyword = ""
         
         if limit is not None:
-            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit),order)
+            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit), order)
         else:
             self.uri = '/api/v1/hardware?order={0}'.format(order)
-        if offset is not None:
-            self.uri = self.uri + '&offset={0}'.format(str(offset))
-        self.server = server + self.uri  + '&search=' + keyword
+        self.server = server + self.uri  + '&search={0}'.format(keyword)
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
     
-    def getAssetsByModel(self, server, token, modelID, limit=None, order='asc', offset=None):
+    def getAssetsByModel(self, server, token, modelID, limit=None, order='asc'):
         """Get list of assets
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            modelID {string} -- Model ID to be limited to     
-            offset {string} -- Starting offset to get the data       
+            modelID {string} -- Model ID to be limited to            
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -99,24 +93,21 @@ class Assets(object):
             [string] -- List of assets from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit),order)
+            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit), order)
         else:
             self.uri = '/api/v1/hardware?order={0}'.format(order)
-        if offset is not None:
-            self.uri = self.uri + '&offset={0}'.format(str(offset))            
         self.server = server + self.uri 
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
 
-    def getAssetsByCategory(self, server, token, categoryID, limit=None, order='asc', offset=None):
+    def getAssetsByCategory(self, server, token, categoryID, limit=None, order='asc'):
         """Get list of assets
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            categoryID {string} -- Category ID to be limited to         
-            offset {string} -- Starting offset to get the data   
+            categoryID {string} -- Category ID to be limited to            
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -126,24 +117,21 @@ class Assets(object):
             [string] -- List of assets from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit),order)
+            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit), order)
         else:
             self.uri = '/api/v1/hardware?order={0}'.format(order)
-        if offset is not None:
-            self.uri = self.uri + '&offset={0}'.format(str(offset))
-        self.server = server + self.uri + '&category_id=' + str(categoryID)
+        self.server = server + self.uri + '&category_id={0}'.format(categoryID)
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
 
-    def getAssetsByManufacturer(self, server, token, manufacturerID, limit=None, order='asc', offset=None):
+    def getAssetsByManufacturer(self, server, token, manufacturerID, limit=None, order='asc'):
         """Get list of assets
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API
-            manufacturerID {string} -- Manufacturer ID to be limited to   
-            offset {string} -- Starting offset to get the data         
+            manufacturerID {string} -- Manufacturer ID to be limited to            
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -153,24 +141,21 @@ class Assets(object):
             [string] -- List of assets from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit),order)
+            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit), order)
         else:
             self.uri = '/api/v1/hardware?order={0}'.format(order)
-        if offset is not None:
-            self.uri = self.uri + '&offset={0}'.format(str(offset))         
         self.server = server + self.uri + '&manufacturer_id={0}'.format(manufacturerID)
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
 
-    def getAssetsByCompany(self, server, token, companyID, limit=None, order='asc', offset=None):
+    def getAssetsByCompany(self, server, token, companyID, limit=None, order='asc'):
         """Get list of assets
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API            
             companyID {string} -- CompanyID to be limited to
-            offset {string} -- Starting offset to get the data
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -180,24 +165,21 @@ class Assets(object):
             [string] -- List of assets from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit),order)
+            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit), order)
         else:
             self.uri = '/api/v1/hardware?order={0}'.format(order)
-        if offset is not None:
-            self.uri = self.uri + '&offset={0}'.format(str(offset))         
         self.server = server + self.uri + '&company_id={0}'.format(companyID)
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content        
 
-    def getAssetsByLocation(self, server, token, locationID, limit=None, order='asc', offset=None):
+    def getAssetsByLocation(self, server, token, locationID, limit=None, order='asc'):
         """Get list of assets
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API            
             locationID {string} -- Location ID to be limited to
-            offset {string} -- Starting offset to get the data
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -207,24 +189,21 @@ class Assets(object):
             [string] -- List of assets from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit),order)
+            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit), order)
         else:
             self.uri = '/api/v1/hardware?order={0}'.format(order)
-        if offset is not None:
-            self.uri = self.uri + '&offset={0}'.format(str(offset))        
         self.server = server + self.uri + '&location_id={0}'.format(locationID)
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content
 
-    def getAssetsByStatus(self, server, token, status, limit=None, order='asc', offset=None):
+    def getAssetsByStatus(self, server, token, status, limit=None, order='asc'):
         """Get list of assets
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API            
             status {string} -- Status types (RTD, Deployed, Undeployable, Deleted, Archived, Requestable)
-            offset {string} -- Starting offset to get the data
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -234,24 +213,21 @@ class Assets(object):
             [string] -- List of assets from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit),order)
+            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit), order)
         else:
             self.uri = '/api/v1/hardware?order={0}'.format(order)
-        if offset is not None:
-            self.uri = self.uri + '&offset={0}'.format(str(offset))          
         self.server = server + self.uri + '&status={0}'.format(status)
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
         return results.content  
 
-    def getAssetsByStatusLabel(self, server, token, statusLabelID, limit=None, order='asc', offset=None):
+    def getAssetsByStatusLabel(self, server, token, statusLabelID, limit=None, order='asc'):
         """Get list of assets
         
         Arguments:
             server {string} -- Server URI
             token {string} -- Token value to be used for accessing the API            
             statusLabelID {string} -- Status label ID
-            offset {string} -- Starting offset to get the data
         
         Keyword Arguments:
             limit {string} -- Limit the number of data returned by the server (default: {50})
@@ -261,11 +237,9 @@ class Assets(object):
             [string] -- List of assets from the server, in JSON formatted
         """
         if limit is not None:
-            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit),order)
+            self.uri = '/api/v1/hardware?limit={0}&order={1}'.format(str(limit), order)
         else:
-            self.uri = '/api/v1/hardware' + '?order=' + order
-        if offset is not None:
-            self.uri = self.uri + '&offset={0}'.format(str(offset))           
+            self.uri = '/api/v1/hardware?order={0}'.format(order)
         self.server = server + self.uri + '&status_id={0}'.format(statusLabelID)
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
@@ -288,7 +262,7 @@ class Assets(object):
         results = requests.get(self.server, headers=headers)
         return results.content
 
-    def getDetailsByTag(self, server, token, AssetTag):
+    def getDetailsByTag(self, server, token, AssetTAG):
         """Get asset details by ID
         
         Arguments:
@@ -373,7 +347,7 @@ class Assets(object):
             [string] -- Server response in JSON formatted
         """        
         self.uri = '/api/v1/hardware/{0}'.format(DeviceID)
-        self.server = server + self.uri 
+        self.server = server + self.uri
         headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
         results = requests.delete(self.server, headers=headers)
         jsonData = json.loads(results.content)
@@ -397,86 +371,3 @@ class Assets(object):
         results = requests.patch(self.server, headers=headers, data=payload)
         jsonData = json.loads(results.content)
         return jsonData['status']
-
-    def checkInAsset(self, server, token, assetID, note=None, locationID=None):
-        """Check in an asset
-        
-        Arguments:
-            server {string} -- Server URI
-            token {string} -- Token value to be used for accessing the API
-            assetID {string} -- ID of the asset
-        
-        Keyword Arguments:
-            note {string} -- Note of the checkin (default: {None})
-            locationID {string} -- Location id where the asset checked in (default: {None})
-        """
-        self.uri = ('/api/v1/hardware/{0}/checkin'.format(assetID))
-        payload  = {'note':note, 'location_id':locationID}
-        self.server = server + self.uri
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
-        results = requests.post(self.server, headers=headers, data=payload)
-        return json.dumps(results.json(),indent=4, separators=(',', ':'))
-
-        
-    def checkOutAsset(self, server, token, assetID, note=None, locationID=None):
-        """Check out an asset
-        
-        Arguments:
-            server {string} -- Server URI
-            token {string} -- Token value to be used for accessing the API
-            assetID {string} -- ID of the asset
-        
-        Keyword Arguments:
-            note {string} -- Note of the checkin (default: {None})
-            locationID {string} -- Location id where the asset checked out (default: {None})
-        """
-        self.uri = ('/api/v1/hardware/{0}/checkout'.format(assetID))
-        payload  = {'note':note, 'location_id':locationID}
-        self.server = server + self.uri
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
-        results = requests.post(self.server, headers=headers, data=payload)
-        return json.dumps(results.json(),indent=4, separators=(',', ':'))
-
-    def auditAsset(self, server, token, assetTag=None, locationID=None):
-        """Audit an asset
-        
-        Arguments:
-            server {string} -- Server URI
-            token {string} -- Token value to be used for accessing the API
-        
-        Keyword Arguments:
-            assetTag {string} -- asset tag to be audited (default: {None})
-            locationID {[type]} -- location ID to be audited (default: {None})
-        """
-        self.uri = '/api/v1/hardware/audit'
-        payload  = {'asset_tag':assetTag, 'location_id':locationID}
-        self.server = server + self.uri
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer {0}'.format(token)}
-        results = requests.post(self.server, headers=headers, data=payload)
-        return json.dumps(results.json(),indent=4, separators=(',', ':'))        
-
-    def getAuditDue(self, server, token):
-        """Gets list of audit dues
-        
-        Arguments:
-            server {string} -- Server URI
-            token {string} -- Token value to be used for accessing the API
-        """
-        self.uri = '/api/v1/hardware/audit/due' 
-        self.server = server + self.uri
-        headers = {'Authorization': 'Bearer {0}'.format(token)}
-        results = requests.get(self.server, headers=headers)
-        return results.content
-
-    def getAuditOverdue(self, server, token):
-        """Gets list of audit overdues
-        
-        Arguments:
-            server {string} -- Server URI
-            token {string} -- Token value to be used for accessing the API
-        """
-        self.uri = '/api/v1/hardware/audit/overdue' 
-        self.server = server + self.uri
-        headers = {'Authorization': 'Bearer {0}'.format(token)}
-        results = requests.get(self.server, headers=headers)
-        return results.content
