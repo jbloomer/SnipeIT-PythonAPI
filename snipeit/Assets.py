@@ -299,7 +299,7 @@ class Assets(object):
         Returns:
             [string] -- Asset details from the server, in JSON formatted
         """
-        self.uri = '/api/v1/hardware/bytag/{0}'.format(str(AssetTAG))
+        self.uri = '/api/v1/hardware/bytag/{0}'.format(str(AssetTag))
         self.server = server + self.uri
         headers = {'Authorization': 'Bearer {0}'.format(token)}
         results = requests.get(self.server, headers=headers)
